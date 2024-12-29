@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Image from "./Image";
 
 const menuList = [
   {
@@ -75,10 +75,10 @@ const LeftBar = () => {
           className="p-2 rounded-full hover:bg-[#181818]"
         >
           <Image
-            src="icons/logo.svg"
+            path="icons/logo.svg"
             alt="logo"
-            width={24}
-            height={24}
+            w={24}
+            h={24}
           />
         </Link>
         <div className="flex flex-col gap-4">
@@ -89,10 +89,10 @@ const LeftBar = () => {
               key={item.id}
             >
               <Image
-                src={`icons/${item.icon}`}
+                path={`icons/${item.icon}`}
                 alt={item.name}
-                width={24}
-                height={24}
+                w={24}
+                h={24}
               />
               <span className="hidden xxl:inline">
                 {item.name}
@@ -105,10 +105,10 @@ const LeftBar = () => {
           className="bg-white text-black rounded-full w-12 h-12 flex items-center justify-center xxl:hidden"
         >
           <Image
-            src="icons/post.svg"
+            path="icons/post.svg"
             alt="new post"
-            width={24}
-            height={24}
+            w={24}
+            h={24}
           />
         </Link>
         <Link
@@ -123,9 +123,11 @@ const LeftBar = () => {
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 relative rounded-full overflow-hidden">
             <Image
-              src="/general/avatar.png"
+              path="/general/avatar.png"
               alt="rustam"
-              fill
+              w={100}
+              h={100}
+              tr={true}
             />
           </div>
           <div className="hidden xxl:flex flex-col">
