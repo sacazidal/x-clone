@@ -1,7 +1,6 @@
 "use client";
 
 import { IKImage } from "imagekitio-next";
-import React from "react";
 
 type ImageType = {
   path: string;
@@ -14,25 +13,19 @@ type ImageType = {
 
 const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
 
-const Image = ({
-  path,
-  w,
-  h,
-  alt,
-  className,
-  tr,
-}: ImageType) => {
+if (!urlEndpoint) {
+  throw new Error('Error: Please add urlEndpoint to .env or .env.local')
+}
+
+const Image = ({ path, w, h, alt, className, tr }: ImageType) => {
   return (
     <IKImage
       urlEndpoint={urlEndpoint}
       path={path}
       {...(tr
-        ? {
-            transformation: [
-              { width: `${w}`, height: `${h}` },
-            ],
-          }
+        ? { transformation: [{ width: `${w}`, height: `${h}` }] }
         : { width: w, height: h })}
+      lqip={{ active: true, quality: 20 }}
       alt={alt}
       className={className}
     />
